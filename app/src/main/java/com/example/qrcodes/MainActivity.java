@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
                         // Hacer Segundo Activity que tenga un web view y habra la pagina
 
                     String url = item.getRawValue();
-
+                    WebActivity(url);
                     Intent browser = new Intent(Intent.ACTION_VIEW, Uri.parse(item.getRawValue()));
                     startActivity(browser);
                 }

@@ -9,9 +9,13 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 public class WebActivity extends AppCompatActivity {
-
+    private String pag;
     private WebView wbV;
 
+
+    public WebActivity(String url){
+        pag=url;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +24,7 @@ public class WebActivity extends AppCompatActivity {
         wbV = findViewById(R.id.wbV);
         WebSettings webSet = wbV.getSettings();
         webSet.setJavaScriptEnabled(true);
-        wbV.loadUrl("//URL DE EL QR");
+        wbV.loadUrl(pag);
         wbV.getSettings().setAppCacheEnabled(true);
         wbV.getSettings().setAppCachePath("/data/data" + getPackageName() + "/cache");
         wbV.getSettings().setSaveFormData(true);
