@@ -11,15 +11,19 @@ import android.webkit.WebViewClient;
 public class WebActivity extends AppCompatActivity {
     private String pag;
     private WebView wbV;
+    private Bundle datos;
 
 
-    public WebActivity(String url){
+   /*public WebActivity(String url){
         pag=url;
-    }
+    } */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.web_activity);
+
+        pag = getIntent().getStringExtra("url") ;
+       // pag = datos.getString("url");
 
         wbV = findViewById(R.id.wbV);
         WebSettings webSet = wbV.getSettings();

@@ -35,7 +35,7 @@ import java.util.List;
 import dmax.dialog.SpotsDialog;
 
 public class MainActivity extends AppCompatActivity {
-
+    private String url;
     private CameraView camView;
     private Button btnScan;
     private AlertDialog alertDialog;
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         camView = findViewById(R.id.cmView);
         btnScan = findViewById(R.id.btnScan);
 
-            alertDialog = new SpotsDialog.Builder()
+        alertDialog = new SpotsDialog.Builder()
                     .setContext(this)
                     .setMessage("Espere")
                     .setCancelable(false)
@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -145,10 +145,12 @@ public class MainActivity extends AppCompatActivity {
                 case FirebaseVisionBarcode.TYPE_URL:{
                         // Hacer Segundo Activity que tenga un web view y habra la pagina
 
-                    String url = item.getRawValue();
-                    WebActivity(url);
-                    Intent browser = new Intent(Intent.ACTION_VIEW, Uri.parse(item.getRawValue()));
-                    startActivity(browser);
+                    Intent web = new Intent(this, WebActivity.class);
+                    url = item.getRawValue();
+                    startActivity(web);
+
+                    //Intent browser = new Intent(Intent.ACTION_VIEW, Uri.parse(item.getRawValue()));
+                    //startActivity(browser);
                 }
                 break;
                 case FirebaseVisionBarcode.TYPE_CONTACT_INFO:{
