@@ -62,11 +62,11 @@ public class MainActivity extends AppCompatActivity {
         camView = findViewById(R.id.cmView);
         btnScan = findViewById(R.id.btnScan);
 
-        alertDialog = new SpotsDialog.Builder()
-                .setContext(this)
-                .setMessage("Espere")
-                .setCancelable(false)
-                .build();
+            alertDialog = new SpotsDialog.Builder()
+                    .setContext(this)
+                    .setMessage("Espere")
+                    .setCancelable(false)
+                    .build();
 
         btnScan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,6 +144,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
                 case FirebaseVisionBarcode.TYPE_URL:{
                         // Hacer Segundo Activity que tenga un web view y habra la pagina
+
+                    String url = item.getRawValue();
+
                     Intent browser = new Intent(Intent.ACTION_VIEW, Uri.parse(item.getRawValue()));
                     startActivity(browser);
                 }
