@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
                         // Hacer Segundo Activity que tenga un web view y habra la pagina
 
                     Intent web = new Intent(this, WebActivity.class);
-                    //aqui se envia la url
+                    //aqui se envia la urlr
                     url = item.getRawValue();
                     startActivity(web);
 
